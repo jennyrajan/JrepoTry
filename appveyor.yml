@@ -1,0 +1,36 @@
+os: Visual Studio 2015
+
+branches:
+  only:
+    - master
+
+skip_tags: true
+
+version: "{build}"
+
+assembly_info:
+  patch: false
+
+platform:
+  - Any CPU
+
+configuration:
+  - Release
+
+before_build:
+  - cmd: nuget restore
+
+build:
+  project: JenCompany.Sun.App1.sln
+  verbosity: minimal
+  publish_wap: true
+
+#deploy:
+#  provider: WebDeploy
+#  server: https://<publishUrl>/msdeploy.axd?site=<msdeploySite>
+#  website: <msdeploySite>
+#  username: <userName>
+#  password:
+#    secure: <userPWD>
+#  ntlm: false
+#  remove_files: false
